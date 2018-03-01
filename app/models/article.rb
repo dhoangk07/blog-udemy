@@ -24,4 +24,12 @@ class Article < ApplicationRecord
       Tag.where(name: n.strip).first_or_create!
     end
   end
+
+	def self.search(search)
+	  if search
+	    self.where('title LIKE ? OR text LIKE ?', "%#{search}%", "%#{search}%")
+	  else
+	    self
+	  end
+	end
 end

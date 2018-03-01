@@ -1,11 +1,16 @@
 class ArticlesController < ApplicationController
 	def index
+
     @articles = if params[:tag]
-    @articles = Article.tagged_with(params[:tag])
+      @articles = Article.tagged_with(params[:tag])
     else
       @articles = Article.all
     end
-  end
+
+		if params[:search].present?
+      @articles = @articles.search(params[:search])
+    end
+	end
 
 	def show
 		@article = Article.find(params[:id])
@@ -48,6 +53,6 @@ class ArticlesController < ApplicationController
 
 	private
 	  def article_params
-	    params.require(:article).permit(:title, :text, :user_id, :tag_list)
+	    params.require(:article).permit(:title, :text, :user_id, :tag_list, :search)
 	  end	
 end
