@@ -26,13 +26,25 @@
 						<%= comment.body %>
 		  		</div>
 		  		
+		  		<%if comment.user.present?%>
+			  		<div class="article-text">
+				  		<h3> Comment </h3>
+							<%= comment.user.name %>
+
+			  		</div>
+		  		<% end %>
 		  	<% end %>
 
 				<%= link_to 'Edit', edit_article_path(@article) %>  |
 				<%= link_to 'Back', articles_path %>
 
+			
+
 	  	</div>
 	  </div>
 	</div>
+			<div class="col-xs-4 col-xs-offset-4">
+      [ <%= link_to "Cancel to request and return to articles listing", articles_path %> ]
+  		</div>
 <% end %>
 
