@@ -27,10 +27,8 @@
 
 						<div class="btn-group">
 							<div class="article-actions">
-								
-							  <p class="btn btn-xs btn-warning dropdown-toggle" >Tags</p>
-							  <p><%= raw article.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></p>
-								</p>
+							  <span class="btn btn-xs btn-warning dropdown-toggle" >Tags</span>
+							  <span><%= raw article.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></span>
 							</div>
 						</div>
 
