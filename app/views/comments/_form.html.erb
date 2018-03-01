@@ -1,7 +1,6 @@
 <div class='row'>
   <div class='col-xs-12'>
-
-		<%= form_for(@article, html: {class: "form-horizontal", role:"form"}) do |f| %>
+		<%= form_with(model: [ @article, @article.comments.build ], html: {class: "form-horizontal", role:"form"}, local: true) do |f| %>
  			<div class='form-group'>
       	<div class='control-label col-sm-2'>
 		  		<%= f.label :commenter %><br>

@@ -1,3 +1,4 @@
+<%if @article.present?%>	
 	<div class="row">
 		<div class="col-xs-9 col-xs-offset-2">
 			<div class="well well-lg">
@@ -14,14 +15,24 @@
 					<%= render 'comments/form' %>
 	  		</div>
 
+	  		<% @article.comments.each do |comment| %>
+		  		<div class="article-text">
+			  		<h3> Commenter </h3>
+						<%= comment.commenter %>
+		  		</div>
 
-				
+		  		<div class="article-text">
+			  		<h3> Comment </h3>
+						<%= comment.body %>
+		  		</div>
+		  		
+		  	<% end %>
 
 				<%= link_to 'Edit', edit_article_path(@article) %>  |
 				<%= link_to 'Back', articles_path %>
 
-
 	  	</div>
 	  </div>
 	</div>
+<% end %>
 
