@@ -22,9 +22,11 @@
 																									data: {confirm: "Are you sure you want to delete the article?"},
 																									class: "btn btn-xs btn-danger" %>
 						</div>
+						<h2>Tags :<%= raw article.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></h2>
 					<% end %>
 				</div>
 			</div>
 		</div>
+		
 	<% end %>
 <% end %>
