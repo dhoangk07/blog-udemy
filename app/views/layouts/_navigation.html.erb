@@ -30,12 +30,14 @@
           </li>
         <% end %>
       </ul>
+
       <form class="navbar-form navbar-left">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
+          <%= form_tag (articles_path, type="text", class="form-control") :method => 'get' do %>
+          <%= text_field_tag :search, params[:search] %>
+          <%= submit_tag ("Search",type="submit" class="btn btn-default") :name => nil %>
+          <% end %>
+
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
