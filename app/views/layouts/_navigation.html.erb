@@ -33,10 +33,12 @@
 
       <form class="navbar-form navbar-left">
         <div class="form-group">
-          <%= form_tag (articles_path, type="text", class="form-control") :method => 'get' do %>
-          <%= text_field_tag :search, params[:search] %>
-          <%= submit_tag ("Search",type="submit" class="btn btn-default") :name => nil %>
+          <%= form_tag articles_path, :class =>"form-control", :method => 'get' do %>
+          <%= text_field_tag :search, params[:search], :class =>"form-control" %>
+          <%= submit_tag "Search", :class => "btn btn-default" %>
           <% end %>
+        </div>
+      </form>
 
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
