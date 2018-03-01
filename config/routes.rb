@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   	resources :comments
   end
   
-  get 'tags/:tag', to: 'articles#index', as: :tag
+  get 'tags/:tag', to: 'articles#index', as: :tag, :constraints  => { :tag => /[^\/]+/ }
   
   devise_for :users
   	resources :users
