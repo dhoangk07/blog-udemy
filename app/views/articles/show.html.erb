@@ -16,35 +16,28 @@
 	  		</div>
 
 	  		<% @article.comments.each do |comment| %>
-		  		<div class="article-text">
-			  		<h3> Commenter </h3>
-						<%= comment.commenter %>
-		  		</div>
-
-		  		<div class="article-text">
-			  		<h3> Comment </h3>
-						<%= comment.body %>
-		  		</div>
-		  		
-		  		<%if comment.user.present?%>
-			  		<div class="article-text">
-				  		<h3> Comment </h3>
-							<%= comment.user.name %>
-
-			  		</div>
-		  		<% end %>
+	  			<%if comment.user.present?%>
+		  			<div class="row">
+	      			<div class="col-xs-8 col-xs-offset-2">
+		     				<div class="well well-sm">
+							  		<h5> Commenter :<%= comment.commenter %></h5>
+							  		<h6> Comment :<%= comment.body %></h6>
+					  					<div class="article-text">
+												<h6 class="btn btn-xs btn-info">	Commented by:<%= comment.user.name if @article.user %></h6><br/>
+												<small >Created at:<%= time_ago_in_words(comment.created_at) %> ago | 
+										Last updated: <%= time_ago_in_words(comment.updated_at) %> ago</small>
+					  					</div>
+					  		</div>
+				  		</div>
+				  	</div>
+				  <% end %>
 		  	<% end %>
+
 
 				<%= link_to 'Edit', edit_article_path(@article) %>  |
 				<%= link_to 'Back', articles_path %>
-
-			
-
 	  	</div>
 	  </div>
 	</div>
-			<div class="col-xs-4 col-xs-offset-4">
-      [ <%= link_to "Cancel to request and return to articles listing", articles_path %> ]
-  		</div>
 <% end %>
 
