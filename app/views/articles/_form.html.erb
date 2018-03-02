@@ -32,6 +32,8 @@
           <%= f.text_field :tag_list, class:'form-control', placeholder: "Enter Tag for this article", autofocus: true %>
         </div>
       </div>
+
+      <%= f.hidden_field :user_id, :value => current_user.id %>
       
       <div class='form-group'>
         <div class='col-sm-offset-2 col-sm-10'>
