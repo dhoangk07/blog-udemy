@@ -48,7 +48,7 @@ class ArticlesController < ApplicationController
 	  @article = Article.find(params[:id])
 	 	@article.taggings.where(:article => params[:id]).first.destroy
 	  @article.destroy
-	 	flash[:danger] = "Article was successfully destroyed"
+	 		flash[:danger] = "Article was successfully destroyed"
 	  redirect_to articles_path
 	end
 
