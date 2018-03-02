@@ -1,6 +1,5 @@
 class ArticlesController < ApplicationController
 	def index
-
     @articles = if params[:tag]
       @articles = Article.tagged_with(params[:tag])
     else
@@ -28,6 +27,7 @@ class ArticlesController < ApplicationController
 		#render plain: params[:article].inspect
 		@article = Article.new(article_params)
 		if @article.save
+			flash[:success] = "Article was successfully created"
 			redirect_to @article
 		else
 			render 'new'
@@ -36,7 +36,7 @@ class ArticlesController < ApplicationController
 
 	def update
   	@article = Article.find(params[:id])
- 
+ 			flash[:success] = "Article was successfully updated"
 	  if @article.update(article_params)
 	    redirect_to @article
 	  else
@@ -47,7 +47,7 @@ class ArticlesController < ApplicationController
 	def destroy
 	  @article = Article.find(params[:id])
 	  @article.destroy
-	 
+	 	flash[:danger] = "Article was successfully destroyed"
 	  redirect_to articles_path
 	end
 
