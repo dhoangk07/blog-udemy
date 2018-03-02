@@ -9,7 +9,7 @@
 					<div class="article-body">
 						<%= truncate(article.text, length: 100)%>
 						<div class="article-meta-details">
-						<h6 class="btn btn-xs btn-info">Created by: <%= article.user.name if article.user%></h6> <br>
+						<h6 class="btn btn-xs btn-info"><%= link_to("Created by: #{article.user.name}", user_path(article.user)) if article.user%></h6> <br>
 						<small >Created at:<%= time_ago_in_words(article.created_at) %> ago | 
 								Last updated: <%= time_ago_in_words(article.updated_at) %> ago
 						</small>

@@ -18,8 +18,6 @@
           <%= f.label :text %>
         </div>
 
-        <%= f.hidden_field :user_id, :value => current_user.id %>
-
         <div class='col-sm-8'>
           <%= f.text_area :text, rows: 10, class:'form-control', placeholder: "Body of article", autofocus: true %>
         </div>

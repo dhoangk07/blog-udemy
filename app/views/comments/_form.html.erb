@@ -1,13 +1,13 @@
 <div class='row'>
   <div class='col-xs-12'>
-		<%= form_with(model: [ @article, @article.comments.build ], html: {class: 'form-horizontal', role: "form"}, local: true) do |f| %>
+		<%= form_with(model: [ @article, @article.comments.build ], html: {class: "form-horizontal", role:"form"}, local: true) do |f| %>
  			<div class='form-group'>
       	<div class='control-label col-sm-2'>
 		  		<%= f.label :commenter %><br>
 				</div>
 
 				<div class='col-sm-8'>
-		  		<%= f.text_field :commenter, class: 'form-control', placeholder: "Commenter", autofocus: true %>
+		  		<%= f.text_field :commenter, class:'form-control', placeholder: "Commenter", autofocus: true %>
 				</div>
 			</div>
 
@@ -17,13 +17,15 @@
 				</div>
 
 				<div class='col-sm-8'>
-			  	<%= f.text_area :body, class: 'form-control', placeholder: "Enter comment" %>
+			  	<%= f.text_area :body, class:'form-control', placeholder: "Enter comment" %>
 				</div>
 	  	</div>
 
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+
 		  <div class='form-group'>
 	      <div class='col-sm-offset-2 col-sm-10'>
-			  	<%= f.submit 'Create', class: 'btn btn-primary btn-lg' %>
+			  	<%= f.submit class: 'btn btn-primary btn-lg' %>
 				</div>
 		  </div>
 		<% end %>
