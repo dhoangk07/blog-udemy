@@ -27,7 +27,7 @@ class Article < ApplicationRecord
 
 	def self.search(search)
 	  if search
-	    self.where('title LIKE ? OR text LIKE ?', "%#{search}%", "%#{search}%")
+	    self.where('title ILIKE ? OR text ILIKE ?', "%#{search}%", "%#{search}%")
 	  else
 	    self
 	  end
