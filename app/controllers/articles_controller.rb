@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+	before_action :set_article ,only: [:edit, :update, :show, :destroy]
+	skip_before_action :authenticate_user!, only: [:index, :show]
 	def index
     @articles = if params[:tag]
       @articles = Article.tagged_with(params[:tag])
@@ -12,7 +14,6 @@ class ArticlesController < ApplicationController
 	end
 
 	def show
-		@article = Article.find(params[:id])
 	end
 
 	def new
@@ -20,7 +21,6 @@ class ArticlesController < ApplicationController
 	end
 
 	def edit
-		@article = Article.find(params[:id])
 	end
 
 	def create
@@ -35,7 +35,6 @@ class ArticlesController < ApplicationController
 	end
 
 	def update
-  	@article = Article.find(params[:id])
  			flash[:success] = "Article was successfully updated"
 	  if @article.update(article_params)
 	    redirect_to @article
@@ -45,7 +44,6 @@ class ArticlesController < ApplicationController
 	end
 
 	def destroy
-	  @article = Article.find(params[:id])
 	 	@article.taggings.where(:article => params[:id]).first.destroy
 	  @article.destroy
 	 		flash[:danger] = "Article was successfully destroyed"
@@ -53,6 +51,10 @@ class ArticlesController < ApplicationController
 	end
 
 	private
+		def set_article
+      @article = Article.find(params[:id])
+    end
+
 	  def article_params
 	    params.require(:article).permit(:title, :text, :user_id, :tag_list, :search)
 	  end	
